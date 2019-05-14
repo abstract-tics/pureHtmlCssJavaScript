@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bstract</title>
+        <link rel="icon" type="image/x-icon" href="images/icono.png" />
+        <style>
+
+            body{
+                margin: 0px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;    
+                background-image: white;         
+            }
+
+            #contenedor{
+                position: static;
+                display: block;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;    
+                width: auto; 
+                height: auto;                           
+            }            
+            
+            #contenedorIzquierda{
+                position: static;
+                display: inline-block;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;       
+                width: 40%; 
+                height: 100px;       
+                float: left;      
+                border-width: 10px;
+                border-style: solid;                
+                border-image: linear-gradient(to bottom, #20BDFF, #96c93d) 1 100%;                           
+             
+            }
+
+            #contenedorDerecha{
+                position: static;
+                display: inline-block;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;      
+                width: 60%;      
+                height: 100px;    
+                float: left;
+
+                background-image: linear-gradient(to right,white, #96c93d);   
+          
+            }            
+            
+            .cabecera{
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;                 
+                position: relative;
+                width: 70%;
+                margin: 40px auto;
+                
+            }             
+
+            .mail{
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;                 
+                position: fixed;
+                width: 30%;
+                bottom: 0;
+                left: 0;     
+                margin: 0px 0px 10px 20px;     
+     
+            }       
+   
+
+            .container{
+                width: 32vw;
+                height: 32vw;
+                position: relative;
+                top: 25%;
+                left: 45%;
+                margin: 50px auto;
+                transform: translate(-50%,-50%);
+                background-color: transparent;
+                perspective: 40vw;
+
+            }
+            .cube{
+                width: 16vw;
+                height: 16vw;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                transform: translate3d(-50%,-50%,-16vw) rotateY(0deg);
+                transform-style: preserve-3d;
+                animation: rotate 120s linear infinite;
+            }
+
+            .cubeFace{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                background-color: transparent;
+                background-image: url("images/imgCubo.png");
+                background-size: 16vw 16vw;
+                background-repeat: no-repeat;
+
+            }
+
+            .cubeFace.front {transform: rotateY(0deg) translateZ(16vw);}
+            .cubeFace.back {transform: rotateY(180deg) translateZ(16vw);}
+            .cubeFace.left {transform: rotateY(-90deg) translateZ(16vw);}
+            .cubeFace.right {transform: rotateY(90deg) translateZ(16vw);}
+            .cubeFace.top {transform: rotateX(90deg) translateZ(16vw);}
+            .cubeFace.bottom {transform: rotateX(-90deg) translateZ(16vw);}
+
+
+            @keyframes rotate{
+                100% {transform: translate3d(-50%,-50%,-16vw) rotateY(360deg)}
+            }
+
+            .slider-wrapper{
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;                  
+                display: flex;
+                align-items: center;
+                margin: auto 0px;
+            }
+            
+            .slider{
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;                 
+                width: 100%;
+                
+                overflow: hidden;
+                max-height: 100vh;
+            }
+
+            .imagenes{                
+                width: 50%;                             
+                top: 0vh;                                            
+                position: fixed;
+                display: inline-block;
+                animation: slide 20s linear infinite;
+            }
+
+            .slider-img1{           
+                width: 100%; 
+                height: auto;   
+                margin: 40vh auto;                 
+            }         
+
+            .slider-img2{           
+                width: 100%; 
+                height: auto; 
+                margin: 0vh auto;
+            }     
+
+            .slider-img3{           
+                width: 100%; 
+                height: auto;      
+                margin: 30vh auto;            
+            }                           
+ 
+
+            @keyframes slide{
+                25%{top: -50vh;}
+                50%{top: -100vh;}
+                75%{top: -150vh;}
+                100%{top: -200vh;}
+            }      
+
+            .alertCopiado{
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;                   
+                z-index: -100;
+                display:none;
+                position: fixed;
+                top:0px;
+                left:0px;
+                width: 0vw;
+                height: 0vh;
+                background-image: linear-gradient(to right,#2C3E50, #4CA1AF);  
+                opacity: 0.9;
+            }
+
+            .alertCopiado div{
+                margin: auto auto;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .alertCopiado div{
+                color: white;
+                text-align: center;
+                margin: 30vh auto;
+                text-transform: uppercase;
+                font-size: 2.5rem;
+                font-family: sans-serif,monospace,arial;
+                
+            }
+
+            .alertCopiado div p{
+                text-transform: lowercase;
+                font-size: 1.5rem;                
+            }         
+
+            .alertCopiado div div{
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;  
+                color:white;
+                width: 25vw;
+                height: auto;                
+                background-image: linear-gradient(to left,#2C3E50, #4CA1AF);
+                border: 5px solid white;
+                font-size: 2rem;
+                margin: 10vh auto;
+     
+            }    
+
+            .loadTime{
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;                 
+                position: fixed;
+                top: 0px;
+                right: 0px;
+                width: auto;
+                height: auto;
+                padding: 5px 10px;
+                color: gray;
+                z-index: 100;
+                font-size: 0.5rem;
+                font-family: console,sans-serif,monospace,arial;
+
+
+            }
+                          
+            
+        </style>
+
+        
+
+        <script>
+            var anchoBrowser = document.documentElement.clientWidth;
+            var altoBrowser = document.documentElement.clientHeight;
+            var anchoPanelIzquierdo =  Math.max(anchoBrowser*0.4);
+            var anchoPanelDerecho = Math.max(anchoBrowser-anchoPanelIzquierdo) - 100;
+
+            function constructorCarga() {           
+
+                if(anchoBrowser > altoBrowser){
+                    document.getElementById("contenedorIzquierda").style.height = altoBrowser+"px";
+                    document.getElementById("contenedorDerecha").style.height = altoBrowser+"px";
+                    document.getElementById("idSliderW").style.height = altoBrowser+"px";     
+   
+                    document.getElementById("idContenedorMail").style.width = "30vw";
+                    document.getElementById("idMail").style.width = "100px";  
+                    document.getElementById("idMail").style.height = "auto";
+                    document.getElementById("idLabelMail").style.fontSize = "1.5rem";
+                    if(anchoBrowser <= 850){
+                        document.getElementById("idLabelMail").style.fontSize = "1rem";
+                        document.getElementById("idCabecera").style.margin = "5px auto";
+                    }
+                                                
+               }       
+               else{                    
+                    document.getElementById("contenedorIzquierda").style.height = altoBrowser+"px";
+                    document.getElementById("contenedorIzquierda").style.width = "100%";
+                    document.getElementById("idContainer").style.left = "20%";
+                    document.getElementById("contenedorDerecha").style.display = "none";                   
+                    document.getElementById("contenedorDerecha").style.width = "0px";
+                    document.getElementById("contenedorDerecha").style.visibility = "hidden";
+                    document.getElementById("idMail").style.width = "100px";  
+                    document.getElementById("idMail").style.height = "auto";
+                    document.getElementById("idLabelMail").style.fontSize = "1.5rem";
+                    
+
+               }      
+
+                var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart; 
+                document.getElementById("idLoadTime").innerHTML = "Load time: "+loadTime+" ms";
+                  
+                
+            };            
+
+            var mailAbstract ="abstract.tics@gmail.com";
+
+            function copyStringToClipboard () {
+                /*
+                // Create new element
+                var el = document.createElement('textarea');
+                // Set value (string to be copied)
+                el.value = mailAbstract;
+                // Set non-editable to avoid focus and move outside of view
+                el.setAttribute('readonly', '');
+                el.style = {position: 'absolute', left: '-9999px'};
+                document.body.appendChild(el);
+                // Select text inside element
+                el.select();
+                // Copy text to clipboard
+                document.execCommand('copy');
+                // Remove temporary element
+                document.body.removeChild(el);
+                */
+
+                if(anchoBrowser <= 850){
+                    document.getElementById("idAlertCopiado").style.zIndex = "100";
+                    document.getElementById("idAlertCopiado").style.display = "block";
+                    document.getElementById("idAlertCopiado").style.width = "100vw";
+                    document.getElementById("idAlertCopiado").style.height = "100vh"; 
+                    document.getElementById("mensajeMail").innerHTML = "";
+                }
+                else{
+                    document.getElementById("mensajeMail").innerHTML = "E-mail copiado";
+                    document.getElementById("idAlertCopiado").style.zIndex = "100";
+                    document.getElementById("idAlertCopiado").style.display = "block";
+                    document.getElementById("idAlertCopiado").style.width = "100vw";
+                    document.getElementById("idAlertCopiado").style.height = "100vh";                     
+
+                    navigator.clipboard.writeText("abstract.tics@gmail.com").then(function() {
+                    /* clipboard successfully set */
+                    }, function() {
+                    /* clipboard write failed */
+                    });                    
+
+                }
+
+            }
+
+            function cerrarModal(){
+                document.getElementById("idAlertCopiado").style.zIndex = "-100";
+                document.getElementById("idAlertCopiado").style.display = "none";
+                document.getElementById("idAlertCopiado").style.width = "0vw";
+                document.getElementById("idAlertCopiado").style.height = "0vh";                
+
+            }
+
+            window.addEventListener("orientationchange", function() {
+                location.reload();
+            }, false);            
+
+            window.onload = constructorCarga;
+        </script>        
+
+    </head>
+    <body>
+
+        <div id="contenedor">
+            <div id="contenedorIzquierda">
+                <div id="idCabecera" class="cabecera">  
+                    <img src="images/logo.png" style="width: 100%; height: auto;">
+                </div>
+        
+                <div id="idContainer" class="container">
+                    <div id="idCube" class="cube">
+                        <div class="cubeFace front"></div>
+                        <div class="cubeFace back"></div>
+                        <div class="cubeFace left"></div>
+                        <div class="cubeFace right"></div>
+                        <div class="cubeFace top"></div>
+                        <div class="cubeFace bottom"></div>                                                    
+                    </div>                   
+                </div>
+
+                <div id="idContenedorMail" class="mail" onclick="copyStringToClipboard()">  
+                    <img id="idMail" src="images/contactanosNombre.png">
+                    <label id="idLabelMail" class="lblMail">abstract.tics@gmail.com</label>
+                </div>                
+            
+            </div>
+
+            <div id="contenedorDerecha">
+                <div id="idSliderW" class="slider-wrapper">
+                    <div class="slider"> 
+                        <div class="imagenes">
+                            <img class="slider-img1" src="images/sliderA.png">
+                            <img class="slider-img2" src="images/sliderB.png">
+                            <img class="slider-img3" src="images/sliderC.png">
+                        </div>
+
+
+                    </div>
+                </div>
+
+ 
+            </div>    
+
+            <div id="idAlertCopiado" class="alertCopiado">
+                <div>
+                    <p id="mensajeMail"> E-mail copiado</p>
+                    <p> abstract.tics@gmail.com</p>
+                    <div onclick="cerrarModal()">OK</div>
+                </div>
+            </div>
+            <span id="idLoadTime" class="loadTime">
+            </span>
+
+        </div>
+      
+
+    </body>
+</html>
